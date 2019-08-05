@@ -1,0 +1,27 @@
+$primary-color: #ef5350;
+
+// Font Weights
+$light: 400;
+$regular: 600;
+$bold: 600;
+
+// Base Font
+$base-font-family: 'Montserrat';
+$base-font-weight: $regular;
+$base-font-size: 1em;
+$base-line-height: 1.4;
+
+* {
+    font-family: $base-font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+ul {
+    color: black;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

@@ -1,16 +1,16 @@
 <template>
-  <div class="home">
-    <HelloWorld />
+  <div>
+    <AppHeader />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
+import AppHeader from '@/components/AppHeader.vue';
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+    AppHeader,
   },
 };
 </script>
