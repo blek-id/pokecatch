@@ -1,3 +1,7 @@
+.container {
+  margin: 1em;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -86,6 +90,15 @@
     font-size: $base-font-size;
     padding: 1.3rem 1rem;
     width: 100%;
+}
+
+.card--pokemon-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 
 @media (min-width:480px) {

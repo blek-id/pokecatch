@@ -1,19 +1,19 @@
 <template>
   <div>
     <AppHeader />
-    <PokemonList />
+    <PokemonDetail />
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader.vue';
-import PokemonList from '@/components/PokemonList.vue';
+import PokemonDetail from '@/components/PokemonDetail.vue';
 
 export default {
-  name: 'home',
+  name: 'detail',
   components: {
     AppHeader,
-    PokemonList,
+    PokemonDetail,
   },
 };
 </script>
