@@ -1,7 +1,9 @@
 <template>
   <section class="pagination">
     <div class="pagination--item pagination--item-arrow">
-      <a href="#" @click.prevent="prevPage(5)">&laquo;</a>
+      <a href="#" @click.prevent="prevPage(5)">
+        <font-awesome-icon icon="angle-double-left" />
+      </a>
     </div>
     <div v-for="index in interval" :key="index" class="pagination--item pagination--item-page">
       <a
@@ -11,7 +13,9 @@
       >{{startPage + index - 1}}</a>
     </div>
     <div class="pagination--item pagination--item-arrow">
-      <a href="#" @click.prevent="nextPage(5)">&raquo;</a>
+      <a href="#" @click.prevent="nextPage(5)">
+        <font-awesome-icon icon="angle-double-right" />
+      </a>
     </div>
   </section>
 </template>

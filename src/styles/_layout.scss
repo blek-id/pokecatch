@@ -4,7 +4,7 @@
 
 .header {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
     color: white;
     background-color: $primary-color;
@@ -37,10 +37,6 @@
 
 .navigation--list {
     display: none;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 8.4%;
     text-align: center;
     width: 100%;
     background-color: $primary-color;
@@ -51,7 +47,6 @@
     display: inline-block;
     opacity: 1;
     transition: opacity .2s ease-in-out, transform .3s ease-in-out;
-    transform: translateY(10%);
 }
 
 .navigation--group {
@@ -92,44 +87,114 @@
     width: 100%;
 }
 
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list--item {
+  flex: 1 1 100%;
+}
+
 .card--pokemon-list {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
   align-items: center;
-  cursor: pointer;
   text-transform: capitalize;
+}
+
+.card--general {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.card--types {
+  align-self: stretch;
+  margin: 0;
+}
+
+.card--items {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-transform: capitalize;
+  
+  > * {
+    text-align: center;
+    flex: 0 1 40%;
+  }
+}
+
+.card--header {
+  flex: 1 1 100%;
+}
+
+.card--stat {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 2rem;
+  text-transform: capitalize;
+}
+
+.catch-pokemon {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+
+}
+
+.catch-pokemon--form {
+  display: flex;
+  flex-direction: wrap;
+
+  > * {
+    margin:0 10px;
+  }
 }
 
 @media (min-width:480px) {
 
-    .header--logo {
-        flex: 1;
-    }
+  .catch-pokemon {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .navigation {        
-        align-items: stretch;
-        flex: 1;
-    }
+  .header--logo {
+      flex: 1;
+  }
 
-    .navigation--list {
-        justify-content: flex-end;
-        display: flex;
-        position: static;
-        opacity: 1;
-    }
+  .navigation {        
+      align-items: stretch;
+      flex: 0;
+  }
 
-    .navigation--item {        
-        border-top: 0;
-    }
+  .navigation--list {
+      justify-content: flex-end;
+      display: flex;
+      position: static;
+      opacity: 1;
+      flex: 1;
+  }
 
-    .navigation--icon {
-        display: none;
-    }
+  .navigation--item {        
+      border-top: 0;
+  }
 
-    .navigation--group { 
-        width: 0;
-        height: 0;
-    }
-    
+  .navigation--icon {
+      display: none;
+  }
+
+  .navigation--group { 
+      width: 0;
+      height: 0;
+  }
+  
+  .list--item {
+    flex: 1 1 40%;
+    margin: 0 40px;
+  }
 }

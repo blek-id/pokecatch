@@ -9,4 +9,9 @@ export default {
     });
     return data;
   },
+
+  async getPokemonDetail(payload) {
+    const data = await Axios.get(`https://pokeapi.co/api/v2/pokemon/${payload}`);
+    return data;
+  },
 };

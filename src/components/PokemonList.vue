@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <section class="status">
-      <h3>Owned Pokemons: x</h3>
+      <h3>Owned Pokemons: {{OWNED_POKEMONS}}</h3>
     </section>
-    <section v-for="pokemon in POKEMONS" :key="pokemon.id">
-      <PokemonCard :pokemon="pokemon" />
+    <section class="list">
+      <div class="list--item" v-for="pokemon in POKEMONS" :key="pokemon.id">
+        <PokemonCard :pokemon="pokemon" />
+      </div>
     </section>
     <PaginationItem :totalCount="POKEMON_COUNT" :dataPerPage="20" :interval="5" />
   </div>
@@ -30,6 +32,7 @@ export default {
   computed: {
     ...mapGetters(['POKEMONS']),
     ...mapGetters(['POKEMON_COUNT']),
+    ...mapGetters(['OWNED_POKEMONS']),
   },
   methods: {},
 };

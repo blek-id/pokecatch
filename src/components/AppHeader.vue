@@ -23,15 +23,15 @@
           @click="toggleHamburger()"
         />
       </transition-group>
-      <ul class="navigation--list" :class="this.isToggled ? 'navigation--list__show' : ''">
-        <li class="navigation--item">
-          <router-link to="/" class="navigation--link">Home</router-link>
-        </li>
-        <li class="navigation--item">
-          <router-link to="/my-pokemon" class="navigation--link">My Pokemon</router-link>
-        </li>
-      </ul>
     </nav>
+    <ul class="navigation--list" :class="this.isToggled ? 'navigation--list__show' : ''">
+      <li class="navigation--item">
+        <router-link to="/" class="navigation--link">Home</router-link>
+      </li>
+      <li class="navigation--item">
+        <router-link to="/my-pokemon" class="navigation--link">My Pokemon</router-link>
+      </li>
+    </ul>
   </header>
 </template>
 
