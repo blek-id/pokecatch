@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <section class="status">
-      <h3>Owned Pokemons: {{OWNED_POKEMONS}}</h3>
+    <section class="page-info">
+      <h3>My Pokemon</h3>
+      <h4>Owned Pokemons: {{OWNED_POKEMONS_COUNT}}</h4>
     </section>
     <section class="list">
       <div class="list--item" v-for="pokemon in POKEMONS" :key="pokemon.id">
@@ -32,7 +33,7 @@ export default {
   computed: {
     ...mapGetters(['POKEMONS']),
     ...mapGetters(['POKEMON_COUNT']),
-    ...mapGetters(['OWNED_POKEMONS']),
+    ...mapGetters(['OWNED_POKEMONS_COUNT']),
   },
   methods: {},
 };

@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <section class="page-info">
+      <h3>Pokemon Detail</h3>
+    </section>
     <div class="card">
       <section class="card--general">
         <h3>{{POKEMON_DETAIL.name}}</h3>
@@ -73,9 +76,10 @@ export default {
     },
     savePokemon() {
       let payload = {
-        id: this.$route.params.id,
-        name: this.pokemonNickname,
-        image: this.POKEMON_DETAIL.imageUrl,
+        id: 0,
+        nickname: this.pokemonNickname,
+        name: this.POKEMON_DETAIL.name,
+        imageUrl: this.POKEMON_DETAIL.imageUrl,
       };
       this.$store.commit('SAVE_POKEMON', payload);
       this.$router.push({ name: 'home' });

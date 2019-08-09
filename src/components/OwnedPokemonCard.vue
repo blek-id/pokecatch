@@ -1,0 +1,36 @@
+<template>
+  <section class="card card--owned-pokemon">
+    <img :src="pokemon.imageUrl" alt="Pokemon Image" />
+    <div class="card--owned-pokemon-text">
+      <p>{{pokemon.name}}</p>
+      <p v-if="pokemon.nickname !== ''">{{pokemon.nickname}}</p>
+    </div>
+    <a class="card--owned-pokemon-button" @click.prevent="removePokemon">
+      <font-awesome-icon icon="times" />
+    </a>
+  </section>
+</template>
+
+<script>
+import store from '../store/index';
+
+export default {
+  name: 'OwnedPokemonCard',
+  props: {
+    pokemon: {
+      id: '',
+      name: '',
+      nickname: '',
+      imageUrl: '',
+    },
+  },
+  methods: {
+    removePokemon() {
+      this.$store.commit('DELETE_POKEMON', this.pokemon.id);
+    },
+  },
+};
+</script>
+
+<style scoped lang="scss">
+</style>

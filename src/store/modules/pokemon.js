@@ -4,7 +4,8 @@ const getters = {
   POKEMONS: (state => state.pokemons),
   POKEMON_COUNT: (state => state.pokemonCount),
   POKEMON_DETAIL: (state => state.pokemonDetail),
-  OWNED_POKEMONS: (state => state.savedPokemon.length),
+  OWNED_POKEMONS_COUNT: (state => state.savedPokemons.length),
+  OWNED_POKEMONS: (state => state.savedPokemons),
 };
 
 const actions = {
@@ -41,7 +42,18 @@ const mutations = {
     };
   },
   SAVE_POKEMON: (state, payload) => {
-    state.savedPokemon.push(payload);
+    state.pokemonIdCounter += 1;
+    const data = {
+      id: state.pokemonIdCounter,
+      name: payload.name,
+      nickname: payload.nickname,
+      imageUrl: payload.imageUrl,
+    };
+    state.savedPokemons.push(data);
+  },
+  DELETE_POKEMON: (state, payload) => {
+    const filtered = state.savedPokemons.filter(savedPokemon => savedPokemon.id !== payload);
+    state.savedPokemons = filtered;
   },
 };
 
@@ -49,7 +61,8 @@ const state = {
   pokemons: [],
   pokemonCount: 0,
   pokemonDetail: {},
-  savedPokemon: [],
+  savedPokemons: [],
+  pokemonIdCounter: 0,
 };
 
 export default {
