@@ -9,14 +9,19 @@
         <PokemonCard :pokemon="pokemon" />
       </div>
     </section>
-    <PaginationItem :totalCount="POKEMON_COUNT" :dataPerPage="20" :interval="5" />
+    <BasePagination
+      :totalCount="POKEMON_COUNT"
+      :dataPerPage="20"
+      :interval="5"
+      @gotoPage="changePageHandle"
+    />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import PokemonCard from '@/components/PokemonCard.vue';
-import PaginationItem from '@/components/PaginationItem.vue';
+import BasePagination from '@/components/BasePagination.vue';
 
 export default {
   name: 'PokemonList',
@@ -25,7 +30,7 @@ export default {
   },
   components: {
     PokemonCard,
-    PaginationItem,
+    BasePagination,
   },
   created() {
     this.$store.dispatch('GET_POKEMONS', this.currentPage);
@@ -35,7 +40,11 @@ export default {
     ...mapGetters(['POKEMON_COUNT']),
     ...mapGetters(['OWNED_POKEMONS_COUNT']),
   },
-  methods: {},
+  methods: {
+    async changePageHandle(value) {
+      await this.$store.dispatch('GET_POKEMONS', value);
+    },
+  },
 };
 </script>
 

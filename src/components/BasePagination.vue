@@ -1,19 +1,19 @@
 <template>
   <section class="pagination">
-    <div class="pagination--item pagination--item-arrow">
-      <a href="#" @click.prevent="prevPage(5)">
+    <div class="pagination--item pagination--item-arrow" v-if="totalCount > interval * dataPerPage">
+      <a href="#" @click.prevent="prevPage(interval)">
         <font-awesome-icon icon="angle-double-left" />
       </a>
     </div>
-    <div v-for="index in interval" :key="index" class="pagination--item pagination--item-page">
+    <div v-for="index in pageInterval" :key="index" class="pagination--item pagination--item-page">
       <a
         href="#"
         @click.prevent="gotoPage(startPage + index - 1)"
         :class="currentPage === (startPage + index - 1) ? 'pagination--item-page__active' : ''"
       >{{startPage + index - 1}}</a>
     </div>
-    <div class="pagination--item pagination--item-arrow">
-      <a href="#" @click.prevent="nextPage(5)">
+    <div class="pagination--item pagination--item-arrow" v-if="totalCount > interval * dataPerPage">
+      <a href="#" @click.prevent="nextPage(interval)">
         <font-awesome-icon icon="angle-double-right" />
       </a>
     </div>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'PaginationItem',
+  name: 'BasePagination',
   data() {
     return {
       currentPage: 1,
@@ -32,6 +32,13 @@ export default {
   computed: {
     maxPages: function() {
       return Math.ceil(this.totalCount / this.dataPerPage);
+    },
+    pageInterval: function() {
+      if (this.maxPages < this.interval) {
+        return this.maxPages;
+      } else {
+        return this.interval;
+      }
     },
   },
   props: {
@@ -53,7 +60,7 @@ export default {
     gotoPage(clickedPage) {
       let lastPage = this.currentPage;
       this.currentPage = clickedPage;
-      this.$store.dispatch('GET_POKEMONS', this.currentPage);
+      this.$emit('gotoPage', this.currentPage);
 
       if (this.currentPage > this.maxPages - Math.floor(this.interval / 2)) {
         if (
