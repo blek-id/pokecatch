@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     removePokemon() {
-      this.$store.commit('DELETE_POKEMON', this.pokemon.id);
+      this.$emit('removePokemon', this.pokemon.id);
     },
   },
 };

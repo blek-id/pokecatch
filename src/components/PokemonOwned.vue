@@ -5,7 +5,7 @@
       <h3>Owned Pokemons: {{OWNED_POKEMONS_COUNT}}</h3>
     </section>
     <div class="list--item" v-for="pokemon in OWNED_POKEMONS" :key="pokemon.id">
-      <OwnedPokemonCard :pokemon="pokemon" />
+      <OwnedPokemonCard :pokemon="pokemon" @removePokemon="removePokemon" />
     </div>
     <section class="list"></section>
     <BasePagination
@@ -29,11 +29,15 @@ export default {
     return {
       dataPerPage: 20,
       interval: 5,
+      currentPage: 1,
     };
   },
   components: {
     OwnedPokemonCard,
     BasePagination,
+  },
+  created() {
+    this.changePageHandle(1);
   },
   computed: {
     ...mapGetters(['OWNED_POKEMONS']),
@@ -41,11 +45,18 @@ export default {
   },
   methods: {
     changePageHandle(value) {
+      this.currentPage = value;
       let payload = {
         startIndex: (value - 1) * this.dataPerPage,
         endIndex: (value - 1) * this.dataPerPage + this.dataPerPage,
       };
       this.$store.commit('SET_OWNED_POKEMONS_OFFSET', payload);
+    },
+    removePokemon(value) {
+      this.$store.commit('DELETE_POKEMON', value);
+      if (this.OWNED_POKEMONS.length === 0) {
+        this.changePageHandle(this.currentPage - 1);
+      }
     },
   },
 };
