@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="IS_LOADING === false">
     <section class="page-info">
       <h3>Pokemon Detail</h3>
     </section>
@@ -40,13 +40,18 @@
       </form>
     </div>
   </div>
+  <BaseLoader v-else />
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import BaseLoader from '@/components/BaseLoader.vue';
 
 export default {
   name: 'PokemonDetail',
+  components: {
+    BaseLoader,
+  },
   props: {
     msg: String,
   },
@@ -58,11 +63,14 @@ export default {
     };
   },
   async created() {
+    this.$store.commit('SET_IS_LOADING', true);
     await this.$store.dispatch('GET_POKEMON_DETAIL', this.$route.params.id);
     this.pokemonNickname = this.POKEMON_DETAIL.name;
+    this.$store.commit('SET_IS_LOADING', false);
   },
   computed: {
     ...mapGetters(['POKEMON_DETAIL']),
+    ...mapGetters(['IS_LOADING']),
   },
   methods: {
     catchPokemon() {

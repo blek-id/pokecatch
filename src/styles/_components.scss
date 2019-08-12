@@ -108,6 +108,17 @@
   color: $danger-color;
 }
 
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 @media (min-width: 480px) {
   .pagination--item {
     flex: 0 1 5%;
