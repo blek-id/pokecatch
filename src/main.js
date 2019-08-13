@@ -2,7 +2,9 @@ import 'normalize.css';
 import './styles/main.scss';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faTimes, faAngleDoubleRight, faAngleDoubleLeft, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars, faTimes, faAngleDoubleRight, faAngleDoubleLeft, faSpinner,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import Vue from 'vue';

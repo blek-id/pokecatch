@@ -3,40 +3,54 @@
     <section class="page-info">
       <h3>Pokemon Detail</h3>
     </section>
-    <div class="card">
-      <section class="card--general">
-        <h3>{{POKEMON_DETAIL.name}}</h3>
+    <div class="card card--pokemon-detail">
+      <section class="card__section">
+        <h3 class="card__header">{{POKEMON_DETAIL.name}}</h3>
         <img :src="POKEMON_DETAIL.imageUrl" alt="Pokemon Image" />
-        <p>{{POKEMON_DETAIL.weight}} kg, {{POKEMON_DETAIL.height}} m</p>
-        <section class="card--items card--types">
-          <div class="card" v-for="(type) in POKEMON_DETAIL.types" :key="type">{{type}}</div>
+        <p>{{POKEMON_DETAIL.weight}} kilograms, {{POKEMON_DETAIL.height}} meters</p>
+        <section class="card__items">
+          <div class="card card--small" v-for="(type) in POKEMON_DETAIL.types" :key="type">
+            <p>{{type}}</p>
+          </div>
         </section>
       </section>
-      <section class="card--items">
-        <h4 class="card--header">Abilities</h4>
-        <div
-          class="card card--ability"
-          v-for="(ability) in POKEMON_DETAIL.abilities"
-          :key="ability"
-        >{{ability}}</div>
+      <section class="card__section">
+        <h4 class="card__header">Abilities</h4>
+        <div class="card__items">
+          <div
+            class="card card--small"
+            v-for="(ability) in POKEMON_DETAIL.abilities"
+            :key="ability"
+          >
+            <p>{{ability}}</p>
+          </div>
+        </div>
       </section>
-      <section class="card--stat" v-for="(stat) in POKEMON_DETAIL.stats" :key="stat.name">
-        <p>{{stat.name}}</p>
-        <p>{{stat.baseStat}}</p>
+      <section class="card__section">
+        <div class="card__stat" v-for="(stat) in POKEMON_DETAIL.stats" :key="stat.name">
+          <p>{{stat.name}}</p>
+          <p>{{stat.baseStat}}</p>
+        </div>
       </section>
     </div>
     <div class="catch-pokemon">
       <a
         v-if="!isCatchAttempted"
         href
-        class="button button_success"
+        class="button button__success"
         @click.prevent="catchPokemon"
       >Catch Pokemon</a>
-      <h4 v-if="isPokemonCatched && isCatchAttempted" class="text__success">Catch Success!</h4>
-      <h4 v-else-if="!isPokemonCatched && isCatchAttempted" class="text__danger">Catch Fail!</h4>
-      <form method="post" v-if="isPokemonCatched" class="catch-pokemon--form">
+      <h4
+        v-if="isPokemonCatched && isCatchAttempted"
+        class="catch-pokemon__text catch-pokemon__text--success"
+      >Catch Success!</h4>
+      <h4
+        v-else-if="!isPokemonCatched && isCatchAttempted"
+        class="catch-pokemon__text catch-pokemon__text--danger"
+      >Catch Fail!</h4>
+      <form method="post" v-if="isPokemonCatched" class="catch-pokemon__form">
         <input type="text" placeholder="Nickname" class="input" v-model="pokemonNickname" />
-        <a href class="button button_success" @click.prevent="savePokemon">Save</a>
+        <a href class="button button__success" @click.prevent="savePokemon">Save</a>
       </form>
     </div>
   </div>

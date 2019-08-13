@@ -1,22 +1,23 @@
 <template>
-  <div class="container" v-if="IS_LOADING === false">
+  <div class="container">
     <section class="page-info">
       <h3>My Pokemon</h3>
       <h4>Owned Pokemons: {{OWNED_POKEMONS_COUNT}}</h4>
     </section>
-    <section class="list">
-      <div class="list--item" v-for="pokemon in POKEMONS" :key="pokemon.id">
+    <section class="list" v-if="IS_LOADING === false">
+      <div class="list__item" v-for="pokemon in POKEMONS" :key="pokemon.id">
         <PokemonCard :pokemon="pokemon" />
       </div>
     </section>
+    <BaseLoader v-else />
     <BasePagination
+      v-if="IS_LOADING === false"
       :totalCount="POKEMON_COUNT"
       :dataPerPage="20"
       :interval="5"
       @gotoPage="changePageHandle"
     />
   </div>
-  <BaseLoader v-else />
 </template>
 
 <script>
@@ -37,7 +38,7 @@ export default {
   },
   async created() {
     this.$store.commit('SET_IS_LOADING', true);
-    await this.$store.dispatch('GET_POKEMONS', this.currentPage);
+    await this.$store.dispatch('GET_POKEMONS', 1);
     this.$store.commit('SET_IS_LOADING', false);
   },
   computed: {

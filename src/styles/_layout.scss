@@ -3,56 +3,105 @@
 }
 
 .header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    color: white;
-    background-color: $primary-color;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: white;
+  background-color: $primary-color;
 }
 
-.header--logo {
-    display: flex;
-    align-items: center;
-    flex: 3;
+.header__logo {
+  display: flex;
+  align-items: center;
+  flex: 3;
+
+  @media (min-width:480px) {
+    flex: 4;
+    flex-basis: 50%
+  }
 }
 
-.header--image {
-    width: 4.5rem;
-    height: 4.5rem;
+.header__image {
+  width: 4.5em;
+  height: 4.5em;
+}
+
+.navigation__icon {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width:480px) {
+    display: none;
+  }
 }
 
 .navigation {
-    flex: 1;
-    justify-self: flex-end;
+  display: none;
+  text-align: center;
+  width: 100%;
+  background-color: $primary-color;
+  opacity: 0;
+
+  @media (min-width:480px) {
     display: flex;
-    align-self: stretch;
-    align-items: center;
-}
-
-.navigation--icon {
-    position: absolute;
-    top: 30%;
-    right: 25%;
-}
-
-.navigation--list {
-    display: none;
-    text-align: center;
-    width: 100%;
-    background-color: $primary-color;
-    opacity: 0;
-}
-
-.navigation--list__show {
-    display: inline-block;
+    justify-content: flex-end;
+    position: static;
     opacity: 1;
-    transition: opacity .2s ease-in-out, transform .3s ease-in-out;
+    flex: 3;
+  }
 }
 
-.navigation--group {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.navigation--show {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity .2s ease-in-out, transform .3s ease-in-out;
+}
+
+.navigation__list {
+  @media (min-width:480px) {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+.navigation__item {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid white;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: white;
+    
+    a {
+        color: $primary-color;
+    }
+  }
+  
+  @media (min-width:480px) {
+    border-top: 0;
+    flex-basis: 50%;
+    align-items: stretch;
+  }
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: white;
+  font-weight: $bold;
+  font-size: $base-font-size;
+  padding: 1em;
+  flex: 1;
+
+  @media (min-width:480px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
 }
 
 .navigation-toggle-enter-active, .navigation-toggle-leave-active {
@@ -64,27 +113,14 @@
   transform: translateX(10px) rotate(90deg);
 }
 
-.navigation--item:hover {
-    background-color: white;
-    
-    a {
-        color: $primary-color;
-    }
-}
+//Pokemon List Page
 
-.navigation--item {
-    display: flex;
-    align-items: center;
-    border-top: 1px solid white;
-}
-
-.navigation--link {
-    text-decoration: none;
-    color: white;
-    font-weight: $bold;
-    font-size: $base-font-size;
-    padding: 1.3rem 1rem;
-    width: 100%;
+.page-info {
+  margin: 1rem 0;
+  
+  > * {
+    margin: 0.3em 0;
+  }
 }
 
 .list {
@@ -92,82 +128,110 @@
   flex-wrap: wrap;
 }
 
-.list--item {
+.list__item {
   flex: 1 1 100%;
+  margin: 1em 0;
+  
+  @media (min-width:480px) {
+    flex-basis: 20em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
 }
 
-.card--pokemon-list {
+//Pokemon Detail Page
+.card--pokemon-detail {    
+  max-width: 48rem;
+  margin: auto;
+}
+
+.card__pokemon-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-transform: capitalize;
 }
 
-.card--owned-pokemon {
+.card__owned-pokemon {
   display: flex;
   padding: 0;
-  margin: 0;
   text-transform: capitalize;
 }
 
-.card--owned-pokemon-button {
+.card__owned-pokemon-button {
   display: flex;
   justify-content: center;
+  border-radius: 0 5px 5px 0;
   align-items: center;
-  flex-basis: 50px;
+  flex-basis: 3.8em;
   color: white;
   background-color: $danger-color;
-  justify-self:flex-end;
   cursor: pointer;
 }
 
-.card--owned-pokemon-button:hover {
+.card__owned-pokemon-button:hover {
   background-color: rgba($danger-color, 0.8);
 }
 
-.card--owned-pokemon-text {
+.card__owned-pokemon-text {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 1em;
 
   :first-child {
     font-size: 0.8em;
   }
 }
 
-.card--general {
+.card__section {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   text-transform: capitalize;
+  text-align: center;
+
+  > * {
+    flex: 1 1 100%;
+  }
+
+  > img {
+    flex: 0;
+  }
 }
 
-.card--types {
-  align-self: stretch;
-  margin: 0;
-}
-
-.card--items {
+.card__items {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   text-transform: capitalize;
+  margin: 1em 0;
   
   > * {
     text-align: center;
-    flex: 0 1 40%;
+    flex: 0 1 20%;
   }
 }
 
-.card--header {
+.card--small {    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3em;
+}
+
+.card__header {
+  text-align: center;
+  margin: 1em 0;
   flex: 1 1 100%;
 }
 
-.card--stat {
+.card__stat {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 2rem;
+  margin: 1em 2em;
   text-transform: capitalize;
 }
 
@@ -176,61 +240,28 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 1rem 0;
-
 }
 
-.catch-pokemon--form {
+.catch-pokemon__form {
   display: flex;
-  flex-direction: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
 
   > * {
-    margin:0 10px;
+    margin: 0.4rem 0.5rem;
   }
 }
 
-.page-info {
-  margin: 1rem 0;
+.catch-pokemon__text {
+  margin: 0.4rem 0;
+  flex-basis: 100%;
+  text-align: center;
 }
 
-@media (min-width:480px) {
+.catch-pokemon__text--success {
+  color: $success-color;
+}
 
-  .catch-pokemon {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header--logo {
-      flex: 1;
-  }
-
-  .navigation {        
-      align-items: stretch;
-      flex: 0;
-  }
-
-  .navigation--list {
-      justify-content: flex-end;
-      display: flex;
-      position: static;
-      opacity: 1;
-      flex: 1;
-  }
-
-  .navigation--item {        
-      border-top: 0;
-  }
-
-  .navigation--icon {
-      display: none;
-  }
-
-  .navigation--group { 
-      width: 0;
-      height: 0;
-  }
-  
-  .list--item {
-    flex: 1 1 40%;
-    margin: 0 40px;
-  }
+.catch-pokemon__text--danger {
+  color: $danger-color;
 }

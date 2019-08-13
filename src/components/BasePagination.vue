@@ -1,18 +1,26 @@
 <template>
   <section class="pagination">
-    <div class="pagination--item pagination--item-arrow" v-if="totalCount > interval * dataPerPage">
+    <div
+      class="pagination__item pagination__arrow"
+      :class="startPage === 1 ? 'pagination__arrow--disabled' : ''"
+      v-if="totalCount > interval * dataPerPage"
+    >
       <a href="#" @click.prevent="prevPage(interval)">
         <font-awesome-icon icon="angle-double-left" />
       </a>
     </div>
-    <div v-for="index in pageInterval" :key="index" class="pagination--item pagination--item-page">
+    <div v-for="index in pageInterval" :key="index" class="pagination__item pagination__page">
       <a
         href="#"
         @click.prevent="gotoPage(startPage + index - 1)"
-        :class="currentPage === (startPage + index - 1) ? 'pagination--item-page__active' : ''"
+        :class="currentPage === (startPage + index - 1) ? 'pagination__page--active' : ''"
       >{{startPage + index - 1}}</a>
     </div>
-    <div class="pagination--item pagination--item-arrow" v-if="totalCount > interval * dataPerPage">
+    <div
+      class="pagination__item pagination__arrow"
+      :class="startPage === 45 ? 'pagination__arrow--disabled' : ''"
+      v-if="totalCount > interval * dataPerPage"
+    >
       <a href="#" @click.prevent="nextPage(interval)">
         <font-awesome-icon icon="angle-double-right" />
       </a>

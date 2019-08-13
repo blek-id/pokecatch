@@ -1,5 +1,5 @@
 <template>
-  <section class="card card--pokemon-list">
+  <section class="card card__pokemon-list">
     <p>{{pokemon.name}}</p>
     <router-link :to="{ name: 'detail', params: {id: pokemon.id}}" class="button">Detail</router-link>
   </section>

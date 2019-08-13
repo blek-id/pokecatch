@@ -4,10 +4,11 @@
       <h3>My Pokemon</h3>
       <h3>Owned Pokemons: {{OWNED_POKEMONS_COUNT}}</h3>
     </section>
-    <div class="list--item" v-for="pokemon in OWNED_POKEMONS" :key="pokemon.id">
-      <OwnedPokemonCard :pokemon="pokemon" @removePokemon="removePokemon" />
-    </div>
-    <section class="list"></section>
+    <section class="list">
+      <div class="list__item" v-for="pokemon in OWNED_POKEMONS" :key="pokemon.id">
+        <OwnedPokemonCard :pokemon="pokemon" @removePokemon="removePokemon" />
+      </div>
+    </section>
     <BasePagination
       v-if="OWNED_POKEMONS_COUNT > dataPerPage"
       :totalCount="OWNED_POKEMONS_COUNT"

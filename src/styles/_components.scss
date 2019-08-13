@@ -1,60 +1,72 @@
 .card {
-  border: 1px solid #999;
   border-radius: 5px;
-  margin: 10px 0px;
-  padding: 10px;
+  padding: 0 1em;
   -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  min-height: 6em;
 }
 
 .input {
   border-radius: 5px;
-  border: 1px solid #999
+  border: 1px solid $border-color;
+  padding: 0.3em 0.3em;
+  margin: 10px;
+
+  &:focus {
+    border: 1px solid $success-color;
+    outline: none;
+  }
 }
 
 .button {
   border-radius: 5px;
-  padding: 10px;
+  padding: 0.5em 1.2em;
+  line-height: 1.75;
   border: 1px solid #ffa500;
   cursor: pointer;
   text-decoration: none;
   color: black;
-  -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: #ffa500;
+    color: white;
+  }
+  
+  @media (min-width:480px) {
+    padding: 0.8em 2em;
+  }
 }
 
-.button:hover {
-  background: #ffa500;
-  color: white;
-}
-
-.button_success {
+.button__success {
   border: 0;
   background-color: $success-color;
   color: white;
+
+  &:hover {
+    background-color: rgba($success-color, 0.8);
+    transform: translateY(-1px);
+    transition: 0.1s
+  }
 }
 
-.button_success:hover {
-  background-color: rgba($success-color, 0.8);
-  transform: translateY(-1px);
-  transition: 0.1s
-}
 .pagination {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   font-size: $pagination-font-size;
-  margin: 15px 0;
+
+  @media (min-width:480px) { 
+    margin: 1em 0;
+  }
 }
 
-.pagination--item {
+.pagination__item {
   display: flex;
-  flex: 1 1;
   justify-content: center;
   border-radius: 5px;
   align-items: center;
-
+  width: 1.5em;
+  
   a {
     color: $primary-color;
     text-decoration: none;
@@ -65,13 +77,23 @@
     height: 100%;
     width: 100%;
   }
+  
+  @media (min-width:480px) {
+    flex: 0 1 5%;
+  }
 }
 
-.pagination--item-page {
-  font-size: 1rem;
+.pagination__page {
+  font-size: 0.6em;    
+  margin: 0 0.25em;
+  
+  @media (min-width:480px) { 
+    font-size: 1.2em;
+    margin: 0rem 1.5rem;
+  }
 }
 
-.pagination--item-page:hover {
+.pagination__page:hover {
   background-color: $primary-color;
 
   a {
@@ -79,7 +101,8 @@
   }
 }
 
-.pagination--item-arrow {
+
+.pagination__arrow {
   background-color: $primary-color;
   border-radius: 5px;
 
@@ -88,7 +111,7 @@
   }
 }
 
-.pagination--item-arrow:hover {
+.pagination__arrow:hover {
   background-color: #fff;
 
   a {
@@ -96,8 +119,21 @@
   }
 }
 
-.pagination--item-page__active {
+.pagination__arrow--disabled {
+  background-color: #ccc;
+  
+  &:hover {
+    background-color: #ccc;
+    
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.pagination__page--active {
   font-weight: $bold;
+  border: 1px solid $primary-color;
 }
 
 .text__success {
@@ -112,20 +148,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-@media (min-width: 480px) {
-  .pagination--item {
-    flex: 0 1 5%;
-  }
-
-  .button {
-    border-radius: 5px;
-    padding: 15px 25px;
-  }
+  padding: 12em 0;
 }

@@ -1,37 +1,35 @@
 <template>
   <header class="header">
-    <div class="header--logo">
-      <img src="@/assets/images/logo.png" alt="Pokeball Logo" class="header--image" />
+    <div class="header__logo">
+      <img src="@/assets/images/logo.png" alt="Pokeball Logo" class="header__image" />
       <h2>Poke Catch</h2>
     </div>
-    <nav class="navigation">
-      <transition-group class="navigation--group" name="navigation-toggle" mode="out-in">
-        <font-awesome-icon
-          v-show="!isToggled"
-          icon="bars"
-          class="navigation--icon"
-          size="2x"
-          key="1"
-          @click="toggleHamburger()"
-        />
-        <font-awesome-icon
-          v-show="isToggled"
-          icon="times"
-          class="navigation--icon"
-          size="2x"
-          key="2"
-          @click="toggleHamburger()"
-        />
-      </transition-group>
+    <transition-group class="navigation__icon" name="navigation-toggle" mode="out-in">
+      <font-awesome-icon
+        v-show="!isToggled"
+        icon="bars"
+        size="2x"
+        key="1"
+        @click="toggleHamburger()"
+      />
+      <font-awesome-icon
+        v-show="isToggled"
+        icon="times"
+        size="2x"
+        key="2"
+        @click="toggleHamburger()"
+      />
+    </transition-group>
+    <nav class="navigation" :class="this.isToggled ? 'navigation--show' : ''">
+      <ul class="navigation__list">
+        <li class="navigation__item">
+          <router-link to="/" class="navigation__link">Home</router-link>
+        </li>
+        <li class="navigation__item">
+          <router-link to="/my-pokemon" class="navigation__link">My Pokemon</router-link>
+        </li>
+      </ul>
     </nav>
-    <ul class="navigation--list" :class="this.isToggled ? 'navigation--list__show' : ''">
-      <li class="navigation--item">
-        <router-link to="/" class="navigation--link">Home</router-link>
-      </li>
-      <li class="navigation--item">
-        <router-link to="/my-pokemon" class="navigation--link">My Pokemon</router-link>
-      </li>
-    </ul>
   </header>
 </template>
 
