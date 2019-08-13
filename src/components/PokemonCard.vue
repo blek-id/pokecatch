@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import store from '../store/index';
-
 export default {
   name: 'PokemonCard',
   props: {

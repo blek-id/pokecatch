@@ -11,7 +11,7 @@
     </section>
     <BaseLoader v-else />
     <BasePagination
-      v-if="IS_LOADING === false"
+      v-show="IS_LOADING === false"
       :totalCount="POKEMON_COUNT"
       :dataPerPage="20"
       :interval="5"

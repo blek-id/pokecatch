@@ -37,21 +37,20 @@
       <a
         v-if="!isCatchAttempted"
         href
-        class="button button__success"
+        class="button button--success"
         @click.prevent="catchPokemon"
       >Catch Pokemon</a>
-      <h4
-        v-if="isPokemonCatched && isCatchAttempted"
-        class="catch-pokemon__text catch-pokemon__text--success"
-      >Catch Success!</h4>
-      <h4
-        v-else-if="!isPokemonCatched && isCatchAttempted"
-        class="catch-pokemon__text catch-pokemon__text--danger"
-      >Catch Fail!</h4>
-      <form method="post" v-if="isPokemonCatched" class="catch-pokemon__form">
-        <input type="text" placeholder="Nickname" class="input" v-model="pokemonNickname" />
-        <a href class="button button__success" @click.prevent="savePokemon">Save</a>
-      </form>
+      <div v-if="isPokemonCatched && isCatchAttempted">
+        <h4 class="catch-pokemon__text catch-pokemon__text--success">Catch Success!</h4>
+        <form method="post" class="catch-pokemon__form">
+          <input type="text" placeholder="Nickname" class="input" v-model="pokemonNickname" />
+          <a href class="button button--success" @click.prevent="savePokemon">Save</a>
+        </form>
+      </div>
+      <div v-else-if="!isPokemonCatched && isCatchAttempted">
+        <h4 class="catch-pokemon__text catch-pokemon__text--danger">Catch Fail!</h4>
+        <a href class="button button--danger" @click.prevent="retryCatch">Retry</a>
+      </div>
     </div>
   </div>
   <BaseLoader v-else />
@@ -105,6 +104,9 @@ export default {
       };
       this.$store.commit('SAVE_POKEMON', payload);
       this.$router.push({ name: 'home' });
+    },
+    retryCatch() {
+      this.isCatchAttempted = false;
     },
   },
 };

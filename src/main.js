@@ -3,7 +3,11 @@ import './styles/main.scss';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faBars, faTimes, faAngleDoubleRight, faAngleDoubleLeft, faSpinner,
+  faBars,
+  faTimes,
+  faAngleDoubleRight,
+  faAngleDoubleLeft,
+  faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
