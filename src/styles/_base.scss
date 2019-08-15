@@ -1,7 +1,7 @@
 $primary-color: #ef5350;
 $secondary-color: #ffffff;
 $border-color: #999999;
-$success-color: #4BB543;
+$success-color: #4bb543;
 $danger-color: #bd3736;
 
 // Font Weights
@@ -10,24 +10,32 @@ $regular: 600;
 $bold: 800;
 
 // Base Font
-$base-font-family: 'Montserrat';
+$base-font-family: "Montserrat";
 $base-font-weight: $regular;
 $base-font-size: 1em;
 $base-line-height: 1.4;
 
-$pagination-font-size: 2em;
+//Font Size
+$large-font-size: 1.6em;
+$small-font-size: 0.8em;
 
 * {
-    font-family: $base-font-family;
+  font-family: $base-font-family;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }
 
 ul {
-    color: black;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  color: black;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

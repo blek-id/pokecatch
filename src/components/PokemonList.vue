@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <section class="page-info">
-      <h3>My Pokemon</h3>
-      <h4>Owned Pokemons: {{OWNED_POKEMONS_COUNT}}</h4>
+      <h2>My Pokemon</h2>
+      <h3>Owned Pokemons: {{OWNED_POKEMONS_COUNT}}</h3>
     </section>
     <section class="list" v-if="IS_LOADING === false">
       <div class="list__item" v-for="pokemon in POKEMONS" :key="pokemon.id">

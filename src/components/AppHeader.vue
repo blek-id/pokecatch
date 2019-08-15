@@ -1,9 +1,9 @@
 <template>
   <header class="header">
-    <div class="header__logo">
+    <router-link to="/" class="header__logo">
       <img src="@/assets/images/logo.png" alt="Pokeball Logo" class="header__image" />
-      <h2>Poke Catch</h2>
-    </div>
+      <h1>Poke Catch</h1>
+    </router-link>
     <transition-group class="navigation__icon" name="navigation-toggle" mode="out-in">
       <font-awesome-icon
         v-show="!isToggled"
