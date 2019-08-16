@@ -35,6 +35,7 @@
     </div>
     <div class="catch-pokemon">
       <a
+        id="catchPokemon"
         v-if="!isCatchAttempted"
         href
         class="button button--success"
@@ -43,13 +44,19 @@
       <div v-if="isPokemonCatched && isCatchAttempted">
         <h4 class="catch-pokemon__text catch-pokemon__text--success">Catch Success!</h4>
         <form method="post" class="catch-pokemon__form">
-          <input type="text" placeholder="Nickname" class="input" v-model="pokemonNickname" />
-          <a href class="button button--success" @click.prevent="savePokemon">Save</a>
+          <input
+            id="pokemonNickname"
+            type="text"
+            placeholder="Nickname"
+            class="input"
+            v-model="pokemonNickname"
+          />
+          <a id="catchResponse" class="button button--success" @click.prevent="savePokemon">Save</a>
         </form>
       </div>
       <div v-else-if="!isPokemonCatched && isCatchAttempted">
         <h4 class="catch-pokemon__text catch-pokemon__text--danger">Catch Fail!</h4>
-        <a href class="button button--danger" @click.prevent="retryCatch">Retry</a>
+        <a id="catchResponse" class="button button--danger" @click.prevent="retryCatch">Retry</a>
       </div>
     </div>
   </div>
@@ -64,9 +71,6 @@ export default {
   name: 'PokemonDetail',
   components: {
     BaseLoader,
-  },
-  props: {
-    msg: String,
   },
   data() {
     return {
@@ -89,11 +93,6 @@ export default {
     catchPokemon() {
       this.isPokemonCatched = Math.random() >= 0.5;
       this.isCatchAttempted = true;
-      if (this.isPokemonCatched) {
-        console.log('Pokemon Catched! Choose nickname');
-      } else {
-        console.log('Pokemon Escaped! :(');
-      }
     },
     savePokemon() {
       let payload = {

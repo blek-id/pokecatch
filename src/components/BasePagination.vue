@@ -5,7 +5,7 @@
       :class="startPage === 1 ? 'pagination__arrow--disabled' : ''"
       v-if="totalCount > interval * dataPerPage"
     >
-      <a href="#" @click.prevent="prevPage(interval)">
+      <a id="prevPage" href="#" @click.prevent="prevPage(interval)">
         <font-awesome-icon icon="angle-double-left" />
       </a>
     </div>
@@ -21,7 +21,7 @@
       :class="startPage === 45 ? 'pagination__arrow--disabled' : ''"
       v-if="totalCount > interval * dataPerPage"
     >
-      <a href="#" @click.prevent="nextPage(interval)">
+      <a id="nextPage" href="#" @click.prevent="nextPage(interval)">
         <font-awesome-icon icon="angle-double-right" />
       </a>
     </div>
