@@ -269,3 +269,11 @@
 .catch-pokemon__text--danger {
   color: $danger-color;
 }
+
+.image__empty {
+  height: 6em;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $primary-color;
+}

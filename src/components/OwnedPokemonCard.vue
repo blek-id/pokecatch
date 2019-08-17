@@ -1,6 +1,6 @@
 <template>
   <section class="card card__owned-pokemon">
-    <img :src="pokemon.imageUrl" alt="Pokemon Image" />
+    <img :src="pokemon.imageUrl" alt="Pokemon Image" class="image__pokemon" />
     <div class="card__owned-pokemon-text">
       <p>{{pokemon.name}}</p>
       <p v-if="pokemon.nickname !== ''">{{pokemon.nickname}}</p>

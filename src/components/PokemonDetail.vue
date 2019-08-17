@@ -6,7 +6,22 @@
     <div class="card card--pokemon-detail">
       <section class="card__section">
         <h3 class="card__header">{{POKEMON_DETAIL.name}}</h3>
-        <img :src="POKEMON_DETAIL.imageUrl" alt="Pokemon Image" />
+        <div v-if="POKEMON_DETAIL.imageUrl !== null">
+          <img
+            :src="POKEMON_DETAIL.imageUrl"
+            v-show="isImageLoaded"
+            v-load-if-complete="POKEMON_DETAIL.imageUrl"
+            @load="isImageLoaded = true"
+            alt="Pokemon Image"
+            class="image__pokemon"
+          />
+          <div class="image__empty" v-show="!isImageLoaded">
+            <font-awesome-icon icon="spinner" spin size="3x" />
+          </div>
+        </div>
+        <div class="image__empty" v-else>
+          <font-awesome-icon icon="times" size="3x" />
+        </div>
         <p>{{POKEMON_DETAIL.weight}} kilograms, {{POKEMON_DETAIL.height}} meters</p>
         <section class="card__items">
           <div class="card card--small" v-for="(type) in POKEMON_DETAIL.types" :key="type">
@@ -66,17 +81,22 @@
 <script>
 import { mapGetters } from 'vuex';
 import BaseLoader from '@/components/BaseLoader.vue';
+import LoadIfComplete from '@/directives/LoadIfCompleteDirective';
 
 export default {
   name: 'PokemonDetail',
   components: {
     BaseLoader,
   },
+  directives: {
+    LoadIfComplete,
+  },
   data() {
     return {
       isPokemonCatched: false,
       isCatchAttempted: false,
       pokemonNickname: '',
+      isImageLoaded: false,
     };
   },
   async created() {
