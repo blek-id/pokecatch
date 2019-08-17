@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section class="page-info">
-      <h3>My Pokemon</h3>
+      <h2>My Pokemon</h2>
       <h3>Owned Pokemons: {{OWNED_POKEMONS_COUNT}}</h3>
     </section>
     <section class="list">

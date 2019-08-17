@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="IS_LOADING === false">
     <section class="page-info">
-      <h3>Pokemon Detail</h3>
+      <h2>Pokemon Detail</h2>
     </section>
     <div class="card card--pokemon-detail">
       <section class="card__section">
