@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import PokemonDetail from '@/components/PokemonDetail.vue';
 import Detail from '@/views/Detail.vue';
+import Home from '@/views/Home.vue';
 
 const localVue = createLocalVue();
 
@@ -16,6 +17,7 @@ let actions;
 
 const routes = [
   { path: '/detail/:id', name: 'detail', component: Detail },
+  { path: '/', name: 'home', component: Home },
 ];
 
 const router = new VueRouter({
