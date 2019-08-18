@@ -9,4 +9,4 @@ export default {
       binding.value.loaded = true;
     }
   },
-}
+};

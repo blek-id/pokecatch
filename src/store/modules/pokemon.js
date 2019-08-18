@@ -5,7 +5,8 @@ const getters = {
   POKEMON_COUNT: (state => state.pokemonCount),
   POKEMON_DETAIL: (state => state.pokemonDetail),
   OWNED_POKEMONS_COUNT: (state => state.savedPokemons.length),
-  OWNED_POKEMONS: (state => state.savedPokemons.slice(state.pokemonOffsetIndexes.startIndex, state.pokemonOffsetIndexes.endIndex)),
+  OWNED_POKEMONS: (state => state.savedPokemons
+    .slice(state.pokemonOffsetIndexes.startIndex, state.pokemonOffsetIndexes.endIndex)),
 };
 
 const actions = {
@@ -57,7 +58,7 @@ const mutations = {
   },
   SET_OWNED_POKEMONS_OFFSET: (state, payload) => {
     state.pokemonOffsetIndexes = payload;
-  }
+  },
 };
 
 const state = {

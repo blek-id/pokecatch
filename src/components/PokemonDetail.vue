@@ -115,7 +115,7 @@ export default {
       this.isCatchAttempted = true;
     },
     savePokemon() {
-      let payload = {
+      const payload = {
         id: 0,
         nickname: this.pokemonNickname,
         name: this.POKEMON_DETAIL.name,

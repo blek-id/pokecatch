@@ -47,7 +47,7 @@ export default {
   methods: {
     changePageHandle(value) {
       this.currentPage = value;
-      let payload = {
+      const payload = {
         startIndex: (value - 1) * this.dataPerPage,
         endIndex: (value - 1) * this.dataPerPage + this.dataPerPage,
       };
